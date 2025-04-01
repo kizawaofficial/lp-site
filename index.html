@@ -141,6 +141,7 @@
             margin-bottom: 10px;
             color: #00b900;
         }
+    
 
         .testimonials {
             margin: 40px 0;
@@ -246,26 +247,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
             z-index: 999;
         }
 
         .modal {
             position: fixed;
-            top: 28%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 80%;
-            width: 80%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 90%;
+            width: 90%;
             z-index: 1000;
+            text-align: center;
+        }
+
+        .modal p {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            font-weight: bold;
         }
 
         .modal span {
+            color: #ff0050;
             font-weight: bold;
+            font-size: 28px;
         }
 
         /* iPhone 12 Pro 向けの最適化 */
@@ -404,7 +416,7 @@
     <!-- TikTokモーダル -->
     <div id="modalOverlay" class="modal-overlay"></div>
     <div id="modal" class="modal">
-        <p><span>TikTok</span>の場合は右上↗の「⋯」から<br />"ブラウザで開く"を押して開いてください。</p>
+        <p><span>TikTok</span>の場合は<br>右上↗の「⋯」から<br />"ブラウザで開く"を押して<br>開いてください。</p>
     </div>
 
     <div class="container">
@@ -499,3 +511,4 @@
         });
     </script>
 </body>
+</html> 
