@@ -249,6 +249,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             z-index: 999;
+            display: none;
         }
 
         .modal {
@@ -264,6 +265,7 @@
             width: 90%;
             z-index: 1000;
             text-align: center;
+            display: none;
         }
 
         .modal p {
@@ -272,12 +274,14 @@
             color: #333;
             margin: 0;
             font-weight: bold;
+            display: block;
         }
 
         .modal span {
             color: #ff0050;
             font-weight: bold;
             font-size: 28px;
+            display: inline-block;
         }
 
         /* iPhone 12 Pro 向けの最適化 */
@@ -501,6 +505,7 @@
                 if (modalOverlay && modal) {
                     modalOverlay.style.display = "block";
                     modal.style.display = "block";
+                    console.log("モーダルを表示します"); // デバッグ用
                 }
             } else {
                 if (modalOverlay && modal) {
