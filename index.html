@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>占いビジネス - 合言葉をゲットしよう</title>
+    <style>
+        body {
+            background-image: url("assets/img/moon_bg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .container {
+            max-width: 390px;
+            margin: 0 auto;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite;
+            padding: 0 10px;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .catchphrase {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 0 15px;
+        }
+
+        .intro {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 12px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .emphasis {
+            font-size: 18px;
+            display: block;
+            margin: 12px 0;
+            color: #00b900;
+            text-shadow: 0 0 10px rgba(0, 185, 0, 0.4);
+        }
+
+        .cta-container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 20px 15px;
+            margin: 10px 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            max-width: 360px;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        .content-wrapper {
+            padding-bottom: 0; /* 元の余白を削除 */
+        }
+
+        .faq-section {
+            margin: 30px 0;
+            padding: 0 15px;
+            margin-bottom: 120px; /* CTAコンテナの高さ分余白を確保 */
+        }
+
+        .faq-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #00b900;
+        }
+
+        .testimonials {
+            margin: 40px 0;
+            padding: 0;
+            width: 100%;
+            padding-bottom: 150px; /* 追加の余白を増やす */
+        }
+
+        .testimonial-title {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .review-images {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 400px; /* LINEボタンの高さ + より大きな余白 */
+        }
+
+        .review-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-register {
+            display: block;
+            width: 90%;
+            margin: 15px auto;
+            padding: 18px 0;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00b900, #037c03);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 185, 0, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 101;
+        }
+
+        .btn-text {
+            font-size: 22px;
+            margin-bottom: 5px;
+            display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-subtext {
+            font-size: 15px;
+            opacity: 0.95;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .line-icon {
+            width: 30px;
+            margin-top: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .modal {
+            position: fixed;
+            top: 28%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            width: 80%;
+            z-index: 1000;
+            display: none;
+            color: #333;
+        }
+
+        .modal span {
+            font-weight: bold;
+        }
+
+        /* iPhone 12 Pro 向けの最適化 */
+        @media (width: 390px) and (height: 844px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .main-title {
+                font-size: 20px;
+            }
+
+            .catchphrase {
+                font-size: 18px;
+            }
+
+            .intro {
+                font-size: 15px;
+                padding: 12px;
+            }
+
+            .emphasis {
+                font-size: 17px;
+            }
+
+            .review-images {
+                padding: 5px;
+                margin-bottom: 450px; /* iPhone 12 Pro用にさらに余白を増やす */
+                gap: 25px; /* 画像間の間隔も調整 */
+            }
+
+            .review-image {
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 32px;
+                padding: 0 10px;
+            }
+
+            .catchphrase {
+                font-size: 24px;
+                padding: 0 15px;
+            }
+
+            .intro {
+                font-size: 18px;
+                padding: 15px;
+                margin: 20px 10px;
+            }
+
+            .emphasis {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .cta-container {
+                padding: 20px 15px;
+                margin: 10px;
+            }
+
+            .btn-register {
+                width: 90%;
+                max-width: 320px;
+                padding: 20px 0 15px;
+            }
+
+            .btn-text {
+                font-size: 24px;
+            }
+
+            .btn-subtext {
+                font-size: 14px;
+            }
+
+            .line-icon {
+                width: 35px;
+                margin-top: 8px;
+            }
+
+            .faq-section {
+                padding: 0 15px;
+            }
+
+            .faq-item {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            .review-images {
+                padding: 10px;
+            }
+
+            .review-image {
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 20px 10px;
+            }
+        }
+
+        /* iPhoneなどの小さい画面向け */
+        @media (max-width: 375px) {
+            .main-title {
+                font-size: 28px;
+            }
+
+            .catchphrase {
+                font-size: 22px;
+            }
+
+            .intro {
+                font-size: 16px;
+            }
+
+            .btn-text {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <header class="header">
+                <div class="main-title">特別無料鑑定実施中</div>
+                <h1 class="catchphrase">
+                    運命の分岐点に立つ<span class="highlight">あなたへ</span><br>
+                    人生の転機を掴む<br>
+                    チャンスです
+                </h1>
+                <p class="intro">
+                    <span class="emphasis">＼ 今だけの特別チャンス ／</span>
+                    西洋占星術と数秘術を組み合わせた<br>
+                    <span class="highlight">プロの占い師による無料鑑定</span>を<br>
+                    体験できます<br>
+                    <br>
+                    あなたの未来が<br>
+                    どんな色に輝くのか、<br>
+                    今すぐ知ってみませんか？<br>
+                    <br>
+                    <span class="emphasis">たった1分のLINE登録で</span>
+                    運命を切り開くヒントがあなたの手の中に
+                </p>
+            </header>
+
+            <section class="faq-section">
+                <h2 class="faq-title">よくある質問</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Q1. 無料鑑定ってどんなことをしてくれるの？</div>
+                    <div class="faq-answer">無料鑑定では、西洋占星術や数秘術を使って、あなたの性格や運勢を読み解き、ワンポイントのアドバイスをお届けします。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q2. 無料鑑定の後は何ができるの？</div>
+                    <div class="faq-answer">無料鑑定のあと、さらにお悩み相談を無料で行うことができます。あなたの疑問や不安に、占い師が丁寧に向き合います。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q3. どうして西洋占星術や数秘術を使うの？</div>
+                    <div class="faq-answer">これらの占いは、長い歴史の中で多くの人に信頼されてきました。あなたの性格や未来を分かりやすく導き出し、適切なアドバイスが受けられるからです。</div>
+                </div>
+            </section>
+
+            <section class="testimonials">
+                <h2 class="testimonial-title">お客様の声</h2>
+                <div class="review-images">
+                    <img src="assets/img/testimonial_1.jpg" alt="お客様の声1" class="review-image">
+                    <img src="assets/img/testimonial_2.jpg" alt="お客様の声2" class="review-image">
+                </div>
+            </section>
+        </div>
+
+        <div class="cta-container">
+            <div class="cta-text">
+                占い師があなたの未来を丁寧に読み解き、<br>あなたの悩みに向き合います。
+            </div>
+
+            <a href="https://lin.ee/9GJb4QB" class="btn-register">
+                <span class="btn-text">✨ 運命の扉を開く ✨</span>
+                <span class="btn-subtext">\ 今なら無料で占い放題 /</span>
+                <img src="assets/img/LINE_Brand_icon.png" alt="LINEアイコン" class="line-icon" />
+            </a>
+        </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay"></div>
+    <div id="modal" class="modal">
+        <p><span>TikTok</span>の場合は、右上の「⋯」から<br />"ブラウザで開く"を選んでね。</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function isWebView() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                return userAgent.indexOf("Bytedance") > -1;
+            }
+
+            function hasTickModal() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("tickmodal") === "1";
+            }
+            
+            const modalOverlay = document.getElementById("modalOverlay");
+            const modal = document.getElementById("modal");
+
+            if (hasTickModal() && isWebView()) {
+                modalOverlay.style.display = "block";
+                modal.style.display = "block";
+            } else {
+                modalOverlay.style.display = "none";
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html> 
